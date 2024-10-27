@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocity Hosting</title>
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Body Style */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: linear-gradient(135deg, #1a0033, #8000ff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 2rem 2rem; /* Extra top padding for fixed navbar */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            z-index: 10;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .navbar .nav-item {
+            color: #ff80ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navbar .nav-item:hover, .navbar .nav-item.active {
+            background: #ff80ff;
+            color: #1a0033;
+        }
+
+        /* Discord Button */
+        .discord-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.8rem 1.2rem;
+            background-color: #7289da;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            z-index: 20;
+        }
+        .discord-button:hover {
+            background-color: #5a6fb4;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #ff80ff;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        header h1:hover {
+            transform: scale(1.1);
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 128, 255, 0.1);
+            margin-bottom: 2rem;
+            color: #ff80ff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .section.active {
+            display: block;
+            opacity: 1;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* Founders */
+        .founders {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .founder-card {
+            padding: 1rem;
+            background: rgba(255, 128, 255, 0.2);
+            border: 1px solid #ff80ff;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            transition: transform 0.3s;
+        }
+        .founder-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 128, 255, 0.3);
+        }
+        .founder-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Plan Cards */
+        .plan-item {
+            background: rgba(255, 128, 255, 0.2);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid #ff80ff;
+            transition: transform 0.3s;
+        }
+        .plan-item:hover {
+            transform: scale(1.02);
+            background: rgba(255, 128, 255, 0.3);
+        }
+        .plan-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .plan-item ul {
+            list-style: none;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .plan-item ul li {
+            margin: 0.5rem 0;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ff80ff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            background: #1a0033;
+            color: #ff80ff;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .nav-item { font-size: 1rem; }
+            .section p, .plan-item ul li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Discord Button -->
+    <a href="https://discord.gg/PvH7A3pGeW" class="discord-button" target="_blank">Join our Discord</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-item active" onclick="showSection('about')">About Us</div>
+        <div class="nav-item" onclick="showSection('minecraft')">Minecraft Plans</div>
+        <div class="nav-item" onclick="showSection('discord')">Discord Plans</div>
+        <div class="nav-item" onclick="showSection('fivem')">FiveM Plans</div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Velocity Hosting</h1>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="section active">
+        <h2>About Us</h2>
+        <p>Welcome to Velocity Hosting! We provide cheap hosting!</p>
+        <div class="founders">
+            <div class="founder-card">
+                <h3>hex</h3>
+                <p>Founder</p>
+            </div>
+            <div class="founder-card">
+                <h3>BAROOOOD11</h3>
+                <p>Founder</p>
+            </div>
+            <div class="founder-card">
+                <h3>Bis</h3>
+                <p>Founder</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minecraft Plans Section -->
+    <section id="minecraft" class="section">
+        <h2>Minecraft Hosting Plans</h2>
+        <div class="plan-item">
+            <h3>Plan 1</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 1GB</li>
+                <li>Storage: 5GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">10M - 10DT 🇹🇳</p>
+        </div>
+        <div class="plan-item">
+            <h3>Plan 2</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 2GB</li>
+                <li>Storage: 10GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">20M - 15DT 🇹🇳</p>
+        </div>
+        <div class="plan-item">
+            <h3>Plan 3</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 3GB</li>
+                <li>Storage: 15GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">30M - 20DT 🇹🇳</p>
+        </div>
+    </section>
+
+    <!-- Discord Bot Hosting Section -->
+    <section id="discord" class="section">
+        <h2>Discord Bot Hosting Plans</h2>
+        <div class="plan-item">
+            <h3>Plan 1</h3>
+            <ul>
+                <li>RAM: 1GB</li>
+                <li>Storage: 5GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">2M - 10DT 🇹🇳</p>
+        </div>
+        <div class="plan-item">
+            <h3>Plan 2</h3>
+            <ul>
+                <li>RAM: 2GB</li>
+                <li>Storage: 10GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">4M - 20DT 🇹🇳</p>
+        </div>
+    </section>
+
+    <!-- FiveM Hosting Section -->
+    <section id="fivem" class="section">
+        <h2>FiveM Hosting Plans</h2>
+        <div class="plan-item">
+            <h3>Plan 1</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 1GB</li>
+                <li>Storage: 5GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">10M - 10DT 🇹🇳</p>
+        </div>
+        <div class="plan-item">
+            <h3>Plan 2</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 2GB</li>
+                <li>Storage: 10GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">20M - 15DT 🇹🇳</p>
+        </div>
+        <div class="plan-item">
+            <h3>Plan 3</h3>
+            <ul>
+                <li>Unlimited Slots</li>
+                <li>RAM: 3GB</li>
+                <li>Storage: 15GB SSD</li>
+                <li>Network: 1GB/s</li>
+                <li>MySQL: 1 Database</li>
+                <li>Anti-DDoS Protection: 14 Tbps</li>
+            </ul>
+            <p class="price">30M - 20DT 🇹🇳</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us: support@velocityhosting.com | © 2023 Velocity Hosting</p>
+    </footer>
+
+    <!-- JavaScript for Tab Functionality -->
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
